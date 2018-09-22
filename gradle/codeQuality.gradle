@@ -1,0 +1,21 @@
+/**
+ * Contains common configurations for working with code quality related to java projects.
+ */
+
+def configDir = new File(rootDir, 'config')
+def checkstyleConfigDir = "$configDir/checkstyle"
+
+// configure static code style plugins
+apply plugin: 'checkstyle'
+checkstyle {
+  configFile = new File(checkstyleConfigDir, "checkstyle.xml")
+  configProperties.checkstyleConfigDir = checkstyleConfigDir
+  ignoreFailures = false
+}
+
+checkstyleMain.finalizedBy
+
+tasks.withType(Test) {
+  systemProperties = System.properties
+  systemProperties['user.dir'] = workingDir
+}
