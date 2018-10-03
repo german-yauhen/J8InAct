@@ -3,8 +3,12 @@ package com.inaction.practise.service.impl;
 import com.inaction.practise.bean.Photo;
 import com.inaction.practise.service.api.GeneralService;
 import com.inaction.practise.service.api.PhotoPredicate;
+import com.inaction.practise.sorting.Direction;
+import com.inaction.practise.sorting.SortArrayService;
+import com.inaction.practise.sorting.TestData;
 import com.inaction.practise.util.FiltrationService;
 import com.inaction.practise.util.GenerationService;
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
 import lombok.extern.slf4j.Slf4j;
@@ -21,6 +25,9 @@ public class GeneralServiceImpl implements GeneralService {
 
   @Autowired
   private FiltrationService filtrationService;
+
+  @Autowired
+  private SortArrayService sortArrayService;
 
   @Value("${count.photo}")
   private Integer genCount;
@@ -57,6 +64,13 @@ public class GeneralServiceImpl implements GeneralService {
     List<Photo> coloredLandscapePhotosByCanon = filtrationService.filterPhotosByGeneralCondition(
         coloredLandscapePhotos, photoGeneralPredicate);
 
+    Integer[] newArrCocktailAsc = sortArrayService.cocktailSort(TestData.intArray, Direction.ASC);
+    log.info(Arrays.toString(newArrCocktailAsc));
+    Double[] newArrSelectionDesc = sortArrayService.selectionSort(TestData.dblArray,
+        Direction.DESC);
+    log.info(Arrays.toString(newArrSelectionDesc));
+    Double[] newArrInsertionAsc = sortArrayService.insertionSort(TestData.dblArray, Direction.ASC);
+    log.info(Arrays.toString(newArrInsertionAsc));
     log.warn("End program");
   }
 
