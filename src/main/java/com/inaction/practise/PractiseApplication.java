@@ -1,6 +1,6 @@
 package com.inaction.practise;
 
-import com.inaction.practise.service.api.GeneralService;
+import com.inaction.practise.service.api.TestExecutionService;
 import java.util.Arrays;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -11,20 +11,16 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class PractiseApplication implements CommandLineRunner {
 
   @Autowired
-  private GeneralService generalService;
+  private TestExecutionService testExecutionService;
 
   public static void main(String[] args) {
     SpringApplication.run(PractiseApplication.class, args);
   }
 
-  /**
-   * Callback used to run the bean.
-   *
-   * @param args incoming main method arguments
-   * @throws Exception on error
-   */
   @Override
   public void run(String... args) throws Exception {
-    generalService.execute(Arrays.asList(args));
+    testExecutionService.execute(Arrays.asList(args));
+    testExecutionService.executeMultiThreadExample();
   }
+
 }

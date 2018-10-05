@@ -3,6 +3,8 @@ buildscript {
     springBootVersion = "2.0.5.RELEASE"
     lombokVersion = "1.18.0.0"
     junitVersion = "4.12"
+    bootWebVersion = "2.0.5.RELEASE"
+    swaggerVersion = "2.6.1"
   }
   repositories {
     mavenCentral()
@@ -30,6 +32,10 @@ dependencies {
   compileOnly 'org.projectlombok:lombok:1.16.18'
   compile "junit:junit:$junitVersion"
   compile "org.springframework.boot:spring-boot-starter"
+  compile "org.springframework.boot:spring-boot-starter-web:$bootWebVersion"
+  compile "io.springfox:springfox-swagger2:$swaggerVersion"
+  compile "io.springfox:springfox-swagger-ui:$swaggerVersion"
+
   testCompile "org.springframework.boot:spring-boot-starter-test"
 }
 
