@@ -77,7 +77,7 @@ public class GenerationService {
   }
 
   private LocalDate randomDate() {
-    long fromTimestamp = LocalDate.of(2016, 1, 1).toEpochDay();
+    long fromTimestamp = LocalDate.now().minusDays(3).toEpochDay();
     long toTimestamp = LocalDate.now().toEpochDay();
     return LocalDate.ofEpochDay(ThreadLocalRandom.current().nextLong(fromTimestamp, toTimestamp));
   }

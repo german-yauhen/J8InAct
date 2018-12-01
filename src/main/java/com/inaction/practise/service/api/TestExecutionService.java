@@ -8,4 +8,6 @@ public interface TestExecutionService {
 
   void executeMultiThreadExample();
 
+  void executeCalculationOfMessages();
+
 }

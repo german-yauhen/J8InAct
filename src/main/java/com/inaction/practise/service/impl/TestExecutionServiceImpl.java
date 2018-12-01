@@ -1,6 +1,11 @@
 package com.inaction.practise.service.impl;
 
 import com.inaction.practise.bean.Photo;
+import com.inaction.practise.interview.CalculationService;
+import com.inaction.practise.interview.GenerationUserMessageUtil;
+import com.inaction.practise.interview.Message;
+import com.inaction.practise.interview.Report;
+import com.inaction.practise.interview.User;
 import com.inaction.practise.multithread.CallableClass;
 import com.inaction.practise.multithread.RunnableClass;
 import com.inaction.practise.service.api.TestExecutionService;
@@ -19,6 +24,7 @@ import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -30,6 +36,12 @@ public class TestExecutionServiceImpl implements TestExecutionService {
 
   @Autowired
   private FiltrationService filtrationService;
+
+  @Autowired
+  private GenerationUserMessageUtil generationUserMessageUtil;
+
+  @Autowired
+  private CalculationService calculationService;
 
   @Value("${count.photo}")
   private Integer genCount;
@@ -89,6 +101,16 @@ public class TestExecutionServiceImpl implements TestExecutionService {
         log.error(e.getMessage());
       }
     });
+  }
+
+  @Override
+  public void executeCalculationOfMessages() {
+    int userCount = 5;
+    int messageCount = 20;
+    List<User> users = generationUserMessageUtil.generateUsers(userCount);
+    List<Message> messages = generationUserMessageUtil.generateMessages(messageCount, users);
+    List<Report> reports = calculationService.makeReport(messages, users);
+    reports.forEach(report -> log.info(report.toString()));
   }
 
 }

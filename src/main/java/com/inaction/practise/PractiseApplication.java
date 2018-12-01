@@ -21,6 +21,7 @@ public class PractiseApplication implements CommandLineRunner {
   public void run(String... args) throws Exception {
     testExecutionService.execute(Arrays.asList(args));
     testExecutionService.executeMultiThreadExample();
+    testExecutionService.executeCalculationOfMessages();
   }
 
 }
