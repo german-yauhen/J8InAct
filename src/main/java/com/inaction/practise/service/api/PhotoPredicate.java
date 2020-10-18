@@ -5,6 +5,6 @@ import com.inaction.practise.bean.Photo;
 @FunctionalInterface
 public interface PhotoPredicate {
 
-  boolean test(Photo photo);
+    boolean test(Photo photo);
 
 }

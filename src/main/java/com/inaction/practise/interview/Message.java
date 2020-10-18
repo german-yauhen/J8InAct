@@ -1,6 +1,7 @@
 package com.inaction.practise.interview;
 
 import java.time.LocalDate;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -8,9 +9,9 @@ import lombok.Data;
 @AllArgsConstructor
 public class Message {
 
-  private int id;
-  private String text;
-  private LocalDate date;
-  private int userId;
+    private int id;
+    private String text;
+    private LocalDate date;
+    private int userId;
 
 }

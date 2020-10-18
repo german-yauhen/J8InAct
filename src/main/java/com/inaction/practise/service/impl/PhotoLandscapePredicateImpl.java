@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class PhotoLandscapePredicateImpl implements PhotoPredicate {
 
-  @Override
-  public boolean test(Photo photo) {
-    return photo.getCategory().equals(LANDSCAPE);
-  }
+    @Override
+    public boolean test(Photo photo) {
+        return photo.getCategory().equals(LANDSCAPE);
+    }
 }

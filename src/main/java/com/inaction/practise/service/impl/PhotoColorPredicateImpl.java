@@ -7,9 +7,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class PhotoColorPredicateImpl implements PhotoPredicate {
 
-  @Override
-  public boolean test(Photo photo) {
-    return photo.getIsColor();
-  }
+    @Override
+    public boolean test(Photo photo) {
+        return photo.getIsColor();
+    }
 
 }

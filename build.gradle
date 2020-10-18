@@ -1,53 +1,44 @@
 buildscript {
-  ext {
-    springBootVersion = "2.0.5.RELEASE"
-    lombokVersion = "1.18.0.0"
-    junitVersion = "4.12"
-    bootWebVersion = "2.0.5.RELEASE"
-    swaggerVersion = "2.6.1"
-  }
-  repositories {
-    mavenCentral()
-  }
-  dependencies {
-    classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-  }
+    ext {
+        springBootVersion = "2.0.5.RELEASE"
+        lombokVersion = "1.18.16"
+        junitVersion = "4.12"
+        bootWebVersion = "2.0.5.RELEASE"
+        swaggerVersion = "2.6.1"
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
 }
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
-apply plugin: 'checkstyle'
 
 group = 'com.inaction'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = 1.8
+sourceCompatibility = 11
 
 repositories {
-  mavenCentral()
+    mavenCentral()
 }
 
 dependencies {
-  compileOnly 'org.projectlombok:lombok:1.16.18'
-  compile "junit:junit:$junitVersion"
-  compile "org.springframework.boot:spring-boot-starter"
-  compile "org.springframework.boot:spring-boot-starter-web:$bootWebVersion"
-  compile "io.springfox:springfox-swagger2:$swaggerVersion"
-  compile "io.springfox:springfox-swagger-ui:$swaggerVersion"
+    compileOnly "org.projectlombok:lombok:$lombokVersion"
+    annotationProcessor "org.projectlombok:lombok:$lombokVersion"
 
-  testCompile "org.springframework.boot:spring-boot-starter-test"
-}
+    testCompileOnly "org.projectlombok:lombok:$lombokVersion"
+    testAnnotationProcessor "org.projectlombok:lombok:$lombokVersion"
 
-checkstyle {
-  toolVersion '8.12'
-  configFile file("config/checkstyle/checkstyle.xml")
-}
+    compile "junit:junit:$junitVersion"
+    compile "org.springframework.boot:spring-boot-starter"
+    compile "org.springframework.boot:spring-boot-starter-web:$bootWebVersion"
+    compile "io.springfox:springfox-swagger2:$swaggerVersion"
+    compile "io.springfox:springfox-swagger-ui:$swaggerVersion"
 
-checkstyleMain {
-  source = 'src/main/java'
-}
-
-checkstyleTest {
-  source = 'src/test/java'
+    testCompile "org.springframework.boot:spring-boot-starter-test"
 }

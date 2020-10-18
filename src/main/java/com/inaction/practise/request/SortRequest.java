@@ -11,8 +11,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class SortRequest {
 
-  private String[] incomeArray;
-  private Direction direction;
-  private SortAs sortAs;
+    private String[] incomeArray;
+    private Direction direction;
+    private SortAs sortAs;
 
 }

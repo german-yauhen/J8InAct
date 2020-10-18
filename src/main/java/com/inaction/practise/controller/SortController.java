@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "array/")
 public class SortController {
 
-  @Autowired
-  private SortService sortService;
+    @Autowired
+    private SortService sortService;
 
-  @RequestMapping(value = "sort", method = RequestMethod.POST)
-  public Object sortArray(@ModelAttribute SortRequest sortRequest) {
-    return sortService.sortArray(sortRequest);
-  }
+    @RequestMapping(value = "sort", method = RequestMethod.POST)
+    public Object sortArray(@ModelAttribute SortRequest sortRequest) {
+        return sortService.sortArray(sortRequest);
+    }
 
 }

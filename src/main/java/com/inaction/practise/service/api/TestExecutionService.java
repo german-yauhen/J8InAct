@@ -4,10 +4,10 @@ import java.util.List;
 
 public interface TestExecutionService {
 
-  void execute(List<String> cmdArgs);
+    void execute(List<String> cmdArgs);
 
-  void executeMultiThreadExample();
+    void executeMultiThreadExample();
 
-  void executeCalculationOfMessages();
+    void executeCalculationOfMessages();
 
 }
